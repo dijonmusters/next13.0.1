@@ -1,42 +1,41 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Image from "next/image";
+import styles from "./page.module.css";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js 13!</a>
+          Welcome to <a href="https://app.supabase.com">Supabase</a> and{" "}
+          <a href="https://nextjs.org">Next.js 13!</a>
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className={styles.code}>app/page.tsx</code>
         </p>
 
         <div className={styles.grid}>
-          <a href="https://beta.nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js 13</p>
-          </a>
+          <Link href="/ssr" className={styles.card}>
+            <h2>SSR &rarr;</h2>
+            <p>Fetch page data on every request.</p>
+          </Link>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Explore the Next.js 13 playground.</p>
-          </a>
+          <Link href="/static" className={styles.card}>
+            <h2>SSG &rarr;</h2>
+            <p>Fetch page data at build time.</p>
+          </Link>
 
-          <a
-            href="https://vercel.com/templates/next.js/app-directory?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>Deploy your Next.js site to a public URL with Vercel.</p>
-          </a>
+          <Link href="/static-with-revalidate" className={styles.card}>
+            <h2>ISR &rarr;</h2>
+            <p>Fetch page data at build time and revalidate.</p>
+          </Link>
+
+          <Link href="/client-side" className={styles.card}>
+            <h2>useEffect &rarr;</h2>
+            <p>Fetch page data client-side with `useEffect`.</p>
+          </Link>
         </div>
       </main>
 
@@ -46,12 +45,12 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }
